@@ -36,7 +36,15 @@ class LoginForm extends Component {
   submitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    const userDetails = {username, password}
+    if(username===""){
+      this.setState({showSubmitError: true, errorMsg:"Invalid Username"})
+      return;
+    }
+    if(password===""){
+      this.setState({showSubmitError: true, errorMsg:"Invalid Password"})
+      return;
+    }
+    const userDetails = {username:"rahul",password:"rahul@2021" }
     const url = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
